@@ -6,7 +6,7 @@
     <title>Мой первый JS код</title>
 </head>
 <body>
-    <!--MY OLD SCRIPT-->
+    <!--MY OLD CODE-->
     <script>
 
         var username = GetCookie('username');
@@ -87,14 +87,19 @@
     </br>
     <script>
         function rel() {
-            document.cookie = "username=1; path=/portfolio; max-age=-1";
+            document.cookie = "username=1; path=/portfolio/; max-age=-1";
             setTimeout(() => {
                 location.reload();
             }, 1000);
             
         }
     </script>
-    <p align="center"><button onclick="rel()">Попробовать другое имя</button></p>
+    <p align="center">
+        <button onclick="rel()">Попробовать другое имя</button>
+        <br/>
+        <br/>
+        <a href="https://github.com/sashagra/portfolio/blob/master/my-first-script.html">Посмотреть код</a>
+    </p>
     
 
 </body>
