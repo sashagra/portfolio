@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой первый JS код</title>
+</head>
+<body>
+    <!--MY OLD SCRIPT-->
+    <script>
+
+        var username = GetCookie('username');
+        if (username == null) {
+            username = prompt('Пожалуйста  назовите  своё  имя',"Странник");
+
+            if (username == null) {
+                alert('Вы  забыли  представится. Буду называть вас Странник.');
+                username = 'Странник';
+            } else {
+                pathname = location.pathname;
+                myDomain = pathname.substring(0,pathname.lastIndexOf('/')) +'/';
+                var largeExpDate = new Date ();
+                largeExpDate.setTime(largeExpDate.getTime() + (365 * 24 * 3600 * 1000));
+                SetCookie('username',username,largeExpDate,myDomain);
+            }
+        }
+
+        function getCookieVal(offset) {
+            var endstr = document.cookie.indexOf (";", offset);
+            if (endstr == -1)
+            endstr = document.cookie.length;
+            return unescape(document.cookie.substring(offset, endstr));
+        }
+
+        function GetCookie(name) {
+            var arg = name + "=";
+            var alen = arg.length;
+            var clen = document.cookie.length;
+            var i = 0;
+            while (i < clen) {
+                var j = i + alen;
+                if (document.cookie.substring(i, j) == arg)
+                return getCookieVal (j);
+                i = document.cookie.indexOf(" ", i) + 1;
+                if (i == 0)
+                break;
+            }
+            return null;
+        }
+
+        function SetCookie (name, value) {
+            var argv = SetCookie.arguments;
+            var argc = SetCookie.arguments.length;
+            var expires = (argc > 2) ? argv[2] : null;
+            var path = (argc > 3) ? argv[3] : null;
+            var domain = (argc > 4) ? argv[4] : null;
+            var secure = (argc > 5) ? argv[5] : false;
+
+            document.cookie = name + "=" + escape (value) +
+            ((expires == null) ? "" : ("; expires=" +
+            expires.toGMTString())) +
+            ((path == null) ? "" : ("; path=" + path)) +
+            ((domain == null) ? "" : ("; domain=" + domain)) +
+            ((secure == true) ? "; secure" : "");
+        }
+
+
+    </script>
+
+    <p align="center">
+        <font size="4" face="Bookman Old Style">
+            <span lang="ru">
+                <b>П</b>риветствуем тебя, 
+                <script language="JavaScript">
+                    var username = GetCookie('username');
+                    if (username == null) {
+                        document.write('Странник')
+                    } else {document.write(username)}
+                </script>!
+            </span>
+        </font>
+    </p>
+    <!--END OF OLD CODE-->
+
+
+    <!--NEW CODE-->
+    </br>
+    <script>
+        function rel() {
+            document.cookie = "username=1; max-age=0";
+            location.reload();
+        }
+    </script>
+    <p align="center"><button onclick="rel()">Попробовать другое имя</button></p>
+    
+
+</body>
+</html>
