@@ -88,7 +88,10 @@
     <script>
         function rel() {
             document.cookie = "username=1; max-age=-1";
-            location.reload();
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+            
         }
     </script>
     <p align="center"><button onclick="rel()">Попробовать другое имя</button></p>
